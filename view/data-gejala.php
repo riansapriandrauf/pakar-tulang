@@ -13,6 +13,7 @@
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="width: 5%;">No</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="width: 5%;">Kode Gejala</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Gejala</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -27,7 +28,44 @@
                                             <?= $data['kode_gejala'] ?>
                                         </span>
                                     <td><?= $data['nama_gejala'] ?></td>
+                                    <td class="">
+                                        <a href="" data-bs-toggle="modal" data-bs-target="#edit<?= $no ?>" class="badge badge-sm bg-gradient-info" data-toggle="tooltip" data-original-title="Edit user">
+                                            Edit
+                                        </a>
+                                        <a href="delete-gejala/<?= encrypt($data['id_gejala']) ?>" class="badge badge-sm bg-gradient-danger" data-toggle="tooltip" data-original-title="Edit user">
+                                            Delete
+                                        </a>
+                                    </td>
                                 </tr>
+
+                                <div class="modal fade" id="edit<?=$no?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="edit<?=$no?>" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="edit<?=$no?>">Edit Gejala</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <form action="data-gejala" method="post">
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <input type="hidden" name="id_gejala" value="<?=$data['id_gejala']?>">
+                                                        <label for="kode_gejala" class="form-label">Kode Gejala</label>
+                                                        <input type="text" name="kode_gejala" id="kode_gejala" class="form-control" required placeholder="Kode gejala" value="<?=$data['kode_gejala']?>" require disabled>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="nama_gejala" class="form-label">Nama Gejala</label>
+                                                        <input type="text" name="nama_gejala" id="nama_gejala" class="form-control" required placeholder="Nama gejala" value="<?=$data['nama_gejala']?>">
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary" name="edit_gejala">Simpan</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
                             <?php
                                 $no++;
                             }

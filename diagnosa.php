@@ -127,12 +127,11 @@ if (empty($_SESSION['username']) && empty($_SESSION['password']) || $_SESSION['l
                         </td>
                         <td>
                             <select id="kondisi<?php echo $r['id_gejala']; ?>" name="kondisi[]" disabled="disabled">
-                                <option value="1.0">IYA</option>
-                                <option value="0.8">HAMPIR PASTI IYA</option>
-                                <option value="0.6">KEMUNGKINAN IYA</option>
-                                <option value="0.4">MUNGKIN IYA</option>
+                                <option value="1.0">Sangat Pasti</option>
+                                <option value="0.6">Pasti</option>
+                                <option value="0.4">Hampir Pasti</option>
                             </select>
-                            <br />
+                            <br/>
                         </td>
                     <?php
                 }

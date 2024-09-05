@@ -26,3 +26,4 @@ RewriteRule ^delete-penyakit/([^/\.]+)/?$ dashboard.php?page=delete-penyakit&id=
 RewriteRule ^delete-data-gejala/([^/\.]+)/?$ dashboard.php?page=delete-data-gejala&id=$1 [L]
 RewriteRule ^delete-gejala-penyakit/([^/\.]+)/?$ dashboard.php?page=delete-gejala-penyakit&id=$1 [L]
 RewriteRule ^delete-diagnosa/([^/\.]+)/?$ dashboard.php?page=delete-diagnosa&id=$1 [L]
+RewriteRule ^delete-gejala/([^/\.]+)/?$ dashboard.php?page=delete-gejala&id=$1 [L]

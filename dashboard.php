@@ -67,36 +67,33 @@ if (empty($_SESSION['username']) && empty($_SESSION['password'])) {
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
         </li>
-          <li class="nav-item mt-3">
-            <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Data Master</h6>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link <?= active_link($queris['page'], 'data-penyakit') ?>" href="data-penyakit">
-              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="fa fa-table text-warning text-sm opacity-10"></i>
-              </div>
-              <span class="nav-link-text ms-1">Data Penyakit</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link <?= active_link($queris['page'], 'data-gejala') ?>" href="data-gejala">
-              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="fa fa-bug text-info text-sm opacity-10"></i>
-              </div>
-              <span class="nav-link-text ms-1">Data Gejala</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link <?= active_link($queris['page'], 'rules') ?>" href="rules">
-              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="fa fa-bug text-success text-sm opacity-10"></i>
-              </div>
-              <span class="nav-link-text ms-1">Rules</span>
-            </a>
-          </li>
-
-
-
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Data Master</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <?= active_link($queris['page'], 'data-penyakit') ?>" href="data-penyakit">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa fa-table text-warning text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Data Penyakit</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <?= active_link($queris['page'], 'data-gejala') ?>" href="data-gejala">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa fa-bug text-info text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Data Gejala</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <?= active_link($queris['page'], 'rules') ?>" href="rules">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa fa-bug text-success text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Rules</span>
+          </a>
+        </li>
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Diagnosa</h6>
         </li>
@@ -214,7 +211,7 @@ if (empty($_SESSION['username']) && empty($_SESSION['password'])) {
         case 'penanganan-penyakit':
           include 'view/data-penanganan.php';
           break;
-        
+
         case 'rules':
           include 'view/rules.php';
           break;

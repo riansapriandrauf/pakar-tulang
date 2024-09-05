@@ -40,12 +40,13 @@ if (isset($_POST['sv_gejala'])) {
 if (isset($_POST['sv_gejala_penyakit'])) {
     $id_penyakit  = $_POST['id_penyakit'];
     $id_gejala  = $_POST['id_gejala'];
+    $cf  = $_POST['cf'];
 
     $cek = mysqli_query($koneksi, "SELECT * FROM tb_gejala_penyakit WHERE id_gejala = '$id_gejala' and id_penyakit = '$id_penyakit'") or die(mysqli_error($koneksi));
     if (mysqli_num_rows($cek) == 0) {
         $kirim = mysqli_query($koneksi, "INSERT into tb_gejala_penyakit 
-        (`id_penyakit`, `id_gejala`) values 
-        ('$id_penyakit', '$id_gejala')");
+        (`id_penyakit`, `id_gejala`, `cf`) values 
+        ('$id_penyakit', '$id_gejala', '$cf')");
         if ($kirim) {
             echo '<script>window.addEventListener("load", berhasil)</script>';
         } else {

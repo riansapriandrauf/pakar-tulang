@@ -19,6 +19,7 @@ $vdata = mysqli_fetch_array($qq);
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="width: 5%;">No</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="width: 5%;">Kode Gejala</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nama Gejala</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Bobot</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Aksi</th>
                             </tr>
                         </thead>
@@ -32,6 +33,7 @@ $vdata = mysqli_fetch_array($qq);
                                     <td>
                                         <span class="badge badge-sm bg-gradient-success"><?= $data['kode_gejala'] ?></span>
                                     <td style="width: 20%;"><?= $data['nama_gejala'] ?></td>
+                                    <td style="width: 20%;"><?= $data['cf'] ?></td>
                                     <td>
                                         <a href="#" data-bs-target="#edit<?= $no ?>" data-bs-toggle="modal" class="badge badge-sm bg-gradient-info text-white">
                                             <i class="fa fa-edit"></i> Edit
@@ -42,6 +44,53 @@ $vdata = mysqli_fetch_array($qq);
                                         </a>
                                     </td>
                                 </tr>
+
+                                <!-- MODAL EDIT DATA  -->
+                                <div class="modal fade" id="edit<?=$no?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="edit<?=$no?>" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="edit<?=$no?>">Edit Gejala</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <form action="gejala-penyakit/<?= $_GET['id'] ?>" method="post">
+                                                <input type="hidden" name="id_gejala_penyakit" value="<?=$data['id_gejala_penyakit']?>">
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <input type="hidden" name="id_penyakit" value="<?= $id ?>">
+                                                        <label for="id_gejala" class="form-label">Kode Gejala</label>
+                                                        <select name="id_gejala" id="id_gejala" class="form-control" required>
+                                                            <option value="">Pilih Gejala</option>
+                                                            <?php
+                                                            $query = data_gejala();
+                                                            foreach ($query as $view) { ?>
+                                                                <option
+                                                                    value="<?= $view['id_gejala'] ?>"
+                                                                    <?php
+                                                                    if($view['id_gejala']== $data['id_gejala']){
+                                                                        echo 'selected';
+                                                                    }
+                                                                    ?>
+                                                                >
+                                                                    <?= $view['kode_gejala'] ?> - <?= $view['nama_gejala'] ?>
+                                                                </option>
+                                                            <?php }
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="">Bobot</label>
+                                                        <input type="text" name="cf" required class="form-control" placeholder="Masukkan Jumlah bobot" value="<?=$data['cf']?>">
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary" name="edit_gejala_penyakit">Simpan</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <!-- MODAL DEKETE DATA  -->
                                 <div class="modal fade" id="delete<?= $no ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="delete" aria-hidden="true">
@@ -57,7 +106,7 @@ $vdata = mysqli_fetch_array($qq);
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <a href="delete-gejala-penyakit/<?=encrypt($data['id_gejala_penyakit'])?>" class="btn btn-danger">Hapus</a>
+                                                <a href="delete-gejala-penyakit/<?= encrypt($data['id_gejala_penyakit']) ?>" class="btn btn-danger">Hapus</a>
                                             </div>
                                         </div>
                                     </div>
@@ -96,6 +145,10 @@ $vdata = mysqli_fetch_array($qq);
                             <?php }
                             ?>
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Bobot</label>
+                        <input type="text" name="cf" required class="form-control" placeholder="Masukkan Jumlah bobot">
                     </div>
                 </div>
                 <div class="modal-footer">
