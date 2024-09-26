@@ -24,7 +24,7 @@ function hitungCertaintyFactor($id_diagnosa) {
         $cf_user = $detail['cf']; // Nilai CF yang diinput oleh pengguna
 
         // Ambil penyakit yang terkait dengan gejala
-        $query = "SELECT p.id_penyakit, p.nama_penyakit, gp.cf AS cf_pakar 
+        $query = "SELECT p.id_penyakit, p.nama_penyakit, p.solusi_penyakit, gp.cf AS cf_pakar 
                   FROM tb_gejala_penyakit gp
                   JOIN tb_penyakit p ON gp.id_penyakit = p.id_penyakit
                   WHERE gp.id_gejala = '$id_gejala'";
@@ -44,6 +44,7 @@ function hitungCertaintyFactor($id_diagnosa) {
             if (!isset($penyakit_cf[$id_penyakit])) {
                 $penyakit_cf[$id_penyakit] = [
                     'nama_penyakit' => $row['nama_penyakit'],
+                    'solusi_penyakit' => $row['solusi_penyakit'],
                     'cf_total' => $cf_gabungan
                 ];
             } else {
@@ -63,7 +64,8 @@ function hitungCertaintyFactor($id_diagnosa) {
         if ($cf_total > 1) {
             $penyakit_diatas_satu_persen[$id_penyakit] = [
                 'nama_penyakit' => $data['nama_penyakit'],
-                'cf_total' => number_format($cf_total, 2) . '%'
+                'cf_total' => number_format($cf_total, 2) . '%',
+                'solusi_penyakit' => $data['solusi_penyakit']
             ];
         }
 
@@ -72,6 +74,7 @@ function hitungCertaintyFactor($id_diagnosa) {
             $cf_tertinggi = $data['cf_total'];
             $penyakit_tertinggi = [
                 'nama_penyakit' => $data['nama_penyakit'],
+                'solusi_penyakit' => $data['solusi_penyakit'],
                 'cf_total' => number_format($cf_tertinggi * 100, 2) . '%'
             ];
         }
@@ -79,15 +82,7 @@ function hitungCertaintyFactor($id_diagnosa) {
 
     return [
         'penyakit_diatas_satu_persen' => $penyakit_diatas_satu_persen,
-        'penyakit_tertinggi' => $penyakit_tertinggi
+        'penyakit_tertinggi' => $penyakit_tertinggi,
     ];
 }
-
-
-
-// CARA MENGGUNAKAN 
-// $result = hitungCertaintyFactor($id_diagnosa);
-// $penyakit_diatas_satu_persen = $result['penyakit_diatas_satu_persen'];
-// $penyakit_tertinggi = $result['penyakit_tertinggi'];
-
 ?>

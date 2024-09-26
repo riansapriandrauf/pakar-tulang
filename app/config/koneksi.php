@@ -2,14 +2,14 @@
 function url()
 {
     return "http://localhost/joki/pakar-tulang/";
-    // return "https://putri.rdm-sultra.com/";
+    // return "https://pakar-tulang.rdm-sultra.com/";
 }
 function url_home()
 {
     return url()."home";
 }
 $koneksi = mysqli_connect('localhost', 'root', '', 'joki_pakar-tulang');
-// $koneksi = mysqli_connect('localhost','rdms2673_rianwolo1505', 'rianwolo1505', 'rdms2673_pakar-jeruk');
+// $koneksi = mysqli_connect('localhost','rdms2673_rianwolo1505', 'rianwolo1505', 'rdms2673_nina');
 if (mysqli_connect_errno()) {
     echo '<script>alert("Koneksi database gagal :' . mysqli_connect_error() . '");</script>';
 }

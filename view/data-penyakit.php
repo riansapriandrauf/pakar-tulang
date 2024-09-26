@@ -37,11 +37,11 @@
                                     <td>
                                         <?= $jumlah_gejala ?> Gejala (<?= implode(' - ', array_gejala($id_penyakit, 'kode_gejala', 'penyakit')) ?>)
                                     </td>
-                                    <!-- <td>
-                                        <a href="penanganan-penyakit/<?= encrypt($data['id_penyakit']) ?>" class="badge badge-sm bg-gradient-warning">
+                                    <td>
+                                        <a data-bs-target="#solusi" data-bs-toggle="modal" class="badge badge-sm bg-gradient-warning">
                                             Cara Penanganan
                                         </a>
-                                    </td> -->
+                                    </td>
                                     <td class="">
                                         <a href="" data-bs-toggle="modal" data-bs-target="#edit<?= $no ?>" class="badge badge-sm bg-gradient-info" data-toggle="tooltip" data-original-title="Edit user">
                                             Edit
@@ -70,6 +70,10 @@
                                                     <div class="form-group">
                                                         <label for="nama_penyakit" class="form-label">Nama Penyakit</label>
                                                         <input type="text" name="nama_penyakit" id="nama_penyakit" class="form-control" required placeholder="Nama Penyakit" value="<?=$data['nama_penyakit']?>">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="solusi_penyakit" class="form-label">Solusi Penyakit</label>
+                                                        <input type="text" name="solusi_penyakit" id="solusi_penyakit" class="form-control" required placeholder="Solusi Penyakit" value="<?=$data['solusi_penyakit']?>">
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
@@ -110,6 +114,10 @@
                     <div class="form-group">
                         <label for="nama_penyakit" class="form-label">Nama Penyakit</label>
                         <input type="text" name="nama_penyakit" id="nama_penyakit" class="form-control" required placeholder="Nama Penyakit">
+                    </div>
+                    <div class="form-group">
+                        <label for="solusi_penyakit" class="form-label">Solusi Penyakit</label>
+                        <input type="text" name="solusi_penyakit" id="solusi_penyakit" class="form-control" required placeholder="Solusi Penyakit">
                     </div>
                 </div>
                 <div class="modal-footer">

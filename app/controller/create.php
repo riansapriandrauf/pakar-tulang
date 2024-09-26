@@ -2,12 +2,13 @@
 if (isset($_POST['sv_penyakit'])) {
     $kode_penyakit  = $_POST['kode_penyakit'];
     $nama_penyakit  = $_POST['nama_penyakit'];
+    $solusi_penyakit  = $_POST['solusi_penyakit'];
 
     $cek = mysqli_query($koneksi, "SELECT * FROM tb_penyakit WHERE kode_penyakit = '$kode_penyakit'");
     if (mysqli_num_rows($cek) == 0) {
         $kirim = mysqli_query($koneksi, "INSERT into tb_penyakit 
-        (`kode_penyakit`, `nama_penyakit`) values 
-        ('$kode_penyakit', '$nama_penyakit')");
+        (`kode_penyakit`, `nama_penyakit`, `solusi_penyakit`) values 
+        ('$kode_penyakit', '$nama_penyakit', '$solusi_penyakit')");
         if ($kirim) {
             echo '<script>window.addEventListener("load", berhasil)</script>';
         } else {

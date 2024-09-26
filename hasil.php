@@ -111,7 +111,9 @@ $penyakit_tertinggi = $result['penyakit_tertinggi'];
                     <div class="tab-pane fade" id="nav-solusi" role="tabpanel" aria-labelledby="nav-solusi-tab">
                         <div class="row">
                             <div class="col-md-12">
-                                <!-- <div class="container"></div> -->
+                                <div class="container">
+                                    <p><?= $penyakit_tertinggi['solusi_penyakit'] ?></p>
+                                </div>
                             </div>
                         </div>
                     </div>
