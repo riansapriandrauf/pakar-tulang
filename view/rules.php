@@ -21,7 +21,7 @@ function cek_cf($kode_penyakit, $kode_gejala) {
             </div>
             <div class="card-body">
                 <div class="table-responsive p-0">
-                    <table class="MyTable table table-striped table-bordered align-items-center mb-0">
+                    <table class=" table table-striped table-bordered align-items-center mb-0">
                         <thead>
                             <tr>
                                 <th rowspan="2" class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="width: 5%;">No</th>
@@ -49,10 +49,15 @@ function cek_cf($kode_penyakit, $kode_gejala) {
                                     <td><?= $no ?></td>
                                     <td><?= $data['kode_gejala'] ?></td>
                                     <?php
-                                    for ($i = 1; $i <= $jumlah_penyakit; $i++) { 
+                                    for ($i = 1; $i <= $jumlah_penyakit; $i++) {
+                                        if($i >= 10){
+                                            $k = 'P'.$i;
+                                        } else{
+                                            $k = 'P0'.$i;
+                                        }
                                         ?>
                                         <td>
-                                            <?= cek_cf('P0'.$i, $data['kode_gejala']) ?>
+                                            <?= cek_cf($k, $data['kode_gejala']) ?>
                                         </td>
                                     <?php
                                     }

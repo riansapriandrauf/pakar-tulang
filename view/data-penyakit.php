@@ -34,9 +34,9 @@
                                     <td>
                                         <?= $data['nama_penyakit'] ?>
                                     </td>
-                                    <td>
+                                    <!-- <td>
                                         <?= $jumlah_gejala ?> Gejala (<?= implode(' - ', array_gejala($id_penyakit, 'kode_gejala', 'penyakit')) ?>)
-                                    </td>
+                                    </td> -->
                                     <td>
                                         <a data-bs-target="#solusi" data-bs-toggle="modal" class="badge badge-sm bg-gradient-warning">
                                             Cara Penanganan
